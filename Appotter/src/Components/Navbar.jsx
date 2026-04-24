@@ -3,11 +3,11 @@ import { House, Heart, Sparkles, Info, User } from "lucide-react";
 
 const Navbar = () => {
   const tabs = [
-    { to: "/",          icon: House,     label: "Home"       },
-    { to: "/favorites", icon: Heart,     label: "Favoritos"  },
-    { to: "/original",  icon: Sparkles,  label: "Original"   },
-    { to: "/info",      icon: Info,      label: "Info"       },
-    { to: "/user",      icon: User,      label: "Usuario"    },
+    { to: "/", icon: House, label: "Home" },
+    { to: "/favorites", icon: Heart, label: "Favoritos" },
+    { to: "/original", icon: Sparkles, label: "Original" },
+    { to: "/info", icon: Info, label: "Info" },
+    { to: "/user", icon: User, label: "Usuario" },
   ];
 
   return (

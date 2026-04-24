@@ -8,9 +8,10 @@ const Home = ({ favorites, onToggleFavorite }) => {
   const [filterHouse, setFilterHouse] = useState("");
 
   const houses = ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"];
+
   const filteredCharacters = useMemo(() => {
     return characters.filter((char) => {
-      const matchName  = char.name?.toLowerCase().includes(search.toLowerCase());
+      const matchName = char.name?.toLowerCase().includes(search.toLowerCase());
       const matchHouse = filterHouse ? char.house === filterHouse : true;
       return matchName && matchHouse;
     });
@@ -18,9 +19,10 @@ const Home = ({ favorites, onToggleFavorite }) => {
 
   return (
     <div className="min-h-screen bg-gray-950 px-4 pt-6 pb-20">
+
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-yellow-400 tracking-wide">
-          ⚡ Personajes
+          Personajes
         </h1>
         <p className="text-gray-400 text-sm mt-1">
           Universo Harry Potter
@@ -28,15 +30,12 @@ const Home = ({ favorites, onToggleFavorite }) => {
       </div>
 
       <div className="relative mb-4">
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-          🔍
-        </span>
         <input
           type="text"
           placeholder="Buscar personaje..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-gray-800 text-white placeholder-gray-500 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          className="w-full bg-gray-800 text-white placeholder-gray-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
         />
       </div>
 
@@ -62,14 +61,13 @@ const Home = ({ favorites, onToggleFavorite }) => {
 
       {loading && (
         <div className="flex flex-col items-center justify-center mt-20 gap-4">
-          <div className="text-5xl animate-spin">⚡</div>
           <p className="text-gray-400 text-sm">Cargando personajes...</p>
         </div>
       )}
 
       {error && (
         <div className="text-center mt-20">
-          <p className="text-red-400 text-sm">❌ {error}</p>
+          <p className="text-red-400 text-sm">{error}</p>
         </div>
       )}
 
@@ -78,7 +76,7 @@ const Home = ({ favorites, onToggleFavorite }) => {
           {filteredCharacters.length === 0 ? (
             <div className="text-center mt-20">
               <p className="text-gray-400 text-sm">
-                No se encontraron personajes 
+                No se encontraron personajes
               </p>
             </div>
           ) : (
@@ -100,7 +98,7 @@ const Home = ({ favorites, onToggleFavorite }) => {
               disabled={page === 1}
               className="px-4 py-2 bg-gray-800 text-white rounded-xl text-sm disabled:opacity-40 hover:bg-gray-700 transition-colors"
             >
-               Anterior
+              Anterior
             </button>
             <span className="text-gray-400 text-sm">
               {page} / {totalPages}
@@ -110,7 +108,7 @@ const Home = ({ favorites, onToggleFavorite }) => {
               disabled={page === totalPages}
               className="px-4 py-2 bg-gray-800 text-white rounded-xl text-sm disabled:opacity-40 hover:bg-gray-700 transition-colors"
             >
-              Siguiente 
+              Siguiente
             </button>
           </div>
         </>

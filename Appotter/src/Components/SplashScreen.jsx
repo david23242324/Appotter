@@ -19,7 +19,6 @@ const SplashScreen = ({ onFinish }) => {
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
     >
-      <div className="text-8xl mb-6 animate-bounce">⚡</div>
       <h1 className="text-4xl font-bold text-yellow-400 tracking-widest mb-2">
         Harry Potter
       </h1>
