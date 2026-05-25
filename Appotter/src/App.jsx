@@ -8,10 +8,14 @@ import Favorites from "../src/Pages/Favorites"
 import Info from "../src/Pages/Info"
 import User from "../src/Pages/ User"
 import Original from "../src/Pages/Original"
+import { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const [favorites, setFavorites] = useState([]);
+  const [user, setUser] = useState(null);
 
   const handleToggleFavorite = (character) => {
     setFavorites((prev) =>
@@ -20,6 +24,15 @@ function App() {
         : [...prev, character]
     );
   };
+
+  useEffect(() => {
+  const unsubscribe =
+    onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+
+  return () => unsubscribe();
+}, []);
 
   if (showSplash) {
     return <SplashScreen onFinish={() => setShowSplash(false)} />;
@@ -62,7 +75,7 @@ function App() {
           <Route path="/user" element={<User />} />
         </Routes>
       </div>
-      <Navbar />
+      {user && <Navbar />}
     </BrowserRouter>
   );
 }
